@@ -2,7 +2,9 @@ package com.lay.inventario.modelo;
 
 import java.io.Serializable;
 
-//@Embeddable
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class MovimientoDetalleId implements Serializable {
 
 	private static final long serialVersionUID = 7539239872958082166L;
@@ -10,7 +12,6 @@ public class MovimientoDetalleId implements Serializable {
 	private Integer mode_item;
 
 	public MovimientoDetalleId(Integer movi_consecutivo, Integer mode_item) {
-		super();
 		this.movi_consecutivo = movi_consecutivo;
 		this.mode_item = mode_item;
 	}

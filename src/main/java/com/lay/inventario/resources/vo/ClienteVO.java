@@ -1,13 +1,8 @@
-package com.lay.inventario.modelo;
+package com.lay.inventario.resources.vo;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
-@Entity
-@NamedQuery(name="Cliente.findClienteById", query="Select c from Cliente c where c.clieId = ?1")
-@NamedQuery(name="Cliente.findByNombreApellido", query = "Select c from Cliente c where c.clieNombre like '%?1%' or c.clieApellido like '%?1%' ")
-public class Cliente {
+public class ClienteVO {
 
 	@Id
 	private String clieId;
@@ -17,10 +12,10 @@ public class Cliente {
 	private String clieTelefono;
 	private String clieEmail;
 
-	public Cliente() {
+	public ClienteVO() {
 	}
 
-	public Cliente(String clieId, String clieNombre, String clieApellido, String clieDireccion, String clieTelefono,
+	public ClienteVO(String clieId, String clieNombre, String clieApellido, String clieDireccion, String clieTelefono,
 			String clieEmail) {
 		this.clieId = clieId;
 		this.clieNombre = clieNombre;

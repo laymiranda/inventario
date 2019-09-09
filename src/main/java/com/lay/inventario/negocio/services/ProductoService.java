@@ -38,11 +38,32 @@ public class ProductoService {
 		return productoRepository.save(producto);
 	}
 	
+	/**
+	 * Metodo utilizado para obtener todos los productos
+	 * @param producto
+	 * @return
+	 */
 	public List<Producto> list(){
 		return productoRepository.findAll();
 	}
 
+	/**
+	 * Metodo utilizado para obtener un producto por codigo
+	 * @param producto
+	 * @return
+	 */
 	public Producto findByCodigo(Integer produCodigo) {
 		return productoRepository.findByProduCodigo(produCodigo);
+	}
+
+	/**
+	 * Metodo utilizado para eliminar un producto
+	 * @param producto
+	 * @return
+	 */
+	@Transactional
+	public void delete(Producto producto) {
+		productoRepository.delete(producto);
+		
 	}
 }

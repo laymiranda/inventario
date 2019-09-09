@@ -9,7 +9,7 @@ import com.lay.inventario.modelo.Producto;
 /**
  * Interface para definir las operaciones de BD relacionadas
  * con el producto
- * @author lamiranda
+ * @author laystiben
  *
  */
 public interface ProductoRepository extends JpaRepository<Producto, String> {

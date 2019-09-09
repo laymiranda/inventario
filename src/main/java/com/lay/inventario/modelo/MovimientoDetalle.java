@@ -1,24 +1,26 @@
 package com.lay.inventario.modelo;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "movimiento_detalle")
 public class MovimientoDetalle {
 
+	@EmbeddedId
+	MovimientoDetalleId movimientoDetalleId;
+
 	/*
-	 * @EmbeddedId MovimientoDetalleId movimientoDetalleId;
+	 * @Id private Integer mode_item;
 	 */
 
-	@Id
-	private Integer mode_item;
-
 	@ManyToOne
-	@JoinColumn(name = "movi_consecutivo")
+	//@JoinColumn(name = "movi_consecutivo")
+	@MapsId("movi_consecutivo")
 	private Movimiento movimiento;
 
 	@ManyToOne
@@ -29,10 +31,13 @@ public class MovimientoDetalle {
 	private Double modePrecio;
 	private boolean modeActivo;
 
-	public MovimientoDetalle(Integer mode_item, Movimiento movimiento, Producto producto, Integer modeCantidad,
-			Double modePrecio, boolean modeActivo) {
+	public MovimientoDetalle() {
+	}
+
+	public MovimientoDetalle(MovimientoDetalleId movimientoDetalleId, Movimiento movimiento, Producto producto,
+			Integer modeCantidad, Double modePrecio, boolean modeActivo) {
 		super();
-		this.mode_item = mode_item;
+		this.movimientoDetalleId = movimientoDetalleId;
 		this.movimiento = movimiento;
 		this.producto = producto;
 		this.modeCantidad = modeCantidad;
@@ -80,12 +85,12 @@ public class MovimientoDetalle {
 		this.modeActivo = modeActivo;
 	}
 
-	public Integer getMode_item() {
-		return mode_item;
+	public MovimientoDetalleId getMovimientoDetalleId() {
+		return movimientoDetalleId;
 	}
 
-	public void setMode_item(Integer mode_item) {
-		this.mode_item = mode_item;
+	public void setMovimientoDetalleId(MovimientoDetalleId movimientoDetalleId) {
+		this.movimientoDetalleId = movimientoDetalleId;
 	}
 
 }
