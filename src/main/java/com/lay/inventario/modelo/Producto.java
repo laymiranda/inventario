@@ -15,7 +15,6 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer prodCodigo;
 	private String prodNombre;
-	private String prodCategoria;
 	private Double prodPrecio;
 
 	public Producto() {
@@ -24,7 +23,6 @@ public class Producto {
 	public Producto(Integer prodCodigo, String prodNombre, String prodCategoria, Double prodPrecio) {
 		this.prodCodigo = prodCodigo;
 		this.prodNombre = prodNombre;
-		this.prodCategoria = prodCategoria;
 		this.prodPrecio = prodPrecio;
 	}
 
@@ -42,14 +40,6 @@ public class Producto {
 
 	public void setProdNombre(String prodNombre) {
 		this.prodNombre = prodNombre;
-	}
-
-	public String getProdCategoria() {
-		return prodCategoria;
-	}
-
-	public void setProdCategoria(String prodCategoria) {
-		this.prodCategoria = prodCategoria;
 	}
 
 	public Double getProdPrecio() {

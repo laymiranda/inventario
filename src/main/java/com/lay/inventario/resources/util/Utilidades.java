@@ -55,7 +55,6 @@ public class Utilidades {
 		
 		Producto producto= new Producto();
 		producto.setProdNombre(productoVO.getProdNombre());
-		producto.setProdCategoria(productoVO.getProdCategoria());
 		producto.setProdPrecio(productoVO.getProdPrecio());
 		
 		return producto;

@@ -3,6 +3,7 @@ package com.lay.inventario.resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -82,6 +83,30 @@ public class MovimientoResource {
 		
 	}
 
+	@GetMapping
+	@ApiOperation(value = "Obtener Movimiento", notes = "Servicio para obtener la informacion de un movimiento")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Movimiento encontrado"),
+			@ApiResponse(code = 400, message = "Solicitud Inválida") })
+	public ResponseEntity<Movimiento> getMovimiento(@RequestBody MovimientoVO movimientoVO) {
+
+		try {
+			Movimiento movimiento = this.movimientoService
+					.findByConsecutivo(movimientoVO.getMoviConsecutivo().intValue());
+
+			if (movimiento == null) {
+				return new ResponseEntity<Movimiento>(HttpStatus.NOT_FOUND);
+			} else {
+				return new ResponseEntity<>(movimiento, HttpStatus.OK);
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Movimiento>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
+	
 	@DeleteMapping("/{moviConsecutivo}")
 	@ApiOperation(value = "Anular Movimiento", notes = "Servicio para anular un nuevo movimiento")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Movimiento anulado correctamente"),

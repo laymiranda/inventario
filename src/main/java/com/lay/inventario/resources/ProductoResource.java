@@ -95,7 +95,6 @@ public class ProductoResource {
 				return new ResponseEntity<Producto>(HttpStatus.NOT_FOUND);
 			} else {
 				producto.setProdNombre(productoVO.getProdNombre());
-				producto.setProdCategoria(productoVO.getProdCategoria());
 				producto.setProdPrecio(productoVO.getProdPrecio());
 			}
 			return new ResponseEntity<>(this.productoService.update(producto), HttpStatus.OK);
